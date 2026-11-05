@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>SkinShredder — База знаний и руководство</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="База знаний и официальное руководство пользователя SkinShredder">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  
+  <!-- Modern Dark Theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/dark.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
+  
+  <style>
+    :root {
+      --base-font-size: 15px;
+      --theme-color: #38bdf8;
+      --sidebar-background: #0f172a;
+      --background: #0b0f19;
+      --text-color-base: #e2e8f0;
+      --heading-color: #ffffff;
+      --sidebar-nav-link-color: #94a3b8;
+      --sidebar-nav-link-color--active: #38bdf8;
+      --table-cell-border-color: #334155;
+      --table-row-odd-background: #1e293b;
+    }
+    body {
+      background-color: #0b0f19;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .sidebar {
+      background-color: #0f172a;
+      border-right: 1px solid #1e293b;
+    }
+    .markdown-section h1, .markdown-section h2, .markdown-section h3 {
+      color: #f8fafc;
+    }
+    .markdown-section table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.5rem 0;
+      background: #131d31;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .markdown-section table th, .markdown-section table td {
+      border: 1px solid #23334e;
+      padding: 10px 14px;
+    }
+    .markdown-section img {
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      border: 1px solid #334155;
+      max-width: 100%;
+    }
+    /* GitBook Hint block styling */
+    .hint-info, .hint-success, .hint-warning, .hint-danger {
+      padding: 14px 18px;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      border-left: 4px solid #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+    }
+    .hint-success {
+      border-left-color: #22c55e;
+      background: rgba(34, 197, 94, 0.1);
+    }
+    .hint-warning {
+      border-left-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.1);
+    }
+    .hint-danger {
+      border-left-color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div id="app">Загрузка базы знаний SkinShredder...</div>
+  <script>
+    window.$docsify = {
+      name: 'SkinShredder',
+      repo: 'https://github.com/djeenwolfy/SkinShredder',
+      loadSidebar: 'SUMMARY.md',
+      subMaxLevel: 2,
+      auto2top: true,
+      homepage: 'README.md',
+      search: {
+        placeholder: 'Поиск по базе знаний...',
+        noData: 'Ничего не найдено',
+        depth: 3
+      },
+      plugins: [
+        function(hook) {
+          // Parse GitBook liquid hints {% hint style="..." %} into styled boxes
+          hook.beforeEach(function(content) {
+            content = content.replace(/\{%\s*hint\s+style="(\w+)"\s*%\}/g, function(match, style) {
+              return '<div class="hint-' + style + '">';
+            });
+            content = content.replace(/\{%\s*endhint\s*%\}/g, '</div>');
+            return content;
+          });
+        }
+      ]
+    }
+  </script>
+  <!-- Docsify core and plugins -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  
+  <!-- KaTeX for LaTeX Math -->
+  <script src="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/marked@4"></script>
+  
+  <!-- Mermaid for diagrams -->
+  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="//unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'dark' });</script>
+</body>
+</html>
